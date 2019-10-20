@@ -2,9 +2,9 @@ import React from 'react'
 
 const Clock = () =>{
     return(
-        <main>
-            <div>Clock</div>
-        </main>
+        <div className="border">
+            Clock
+        </div>
 
     )
 }
