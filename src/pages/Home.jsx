@@ -4,7 +4,7 @@ import Clock from '../components/Clock'
 const Home = () =>{
     return(
         <div className="bg-gray-600 h-screen">
-            <main>
+            <main className="flex justify-center items-center h-full">
                 <Clock />
             </main>
         </div>
