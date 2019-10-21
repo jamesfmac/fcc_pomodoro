@@ -5,7 +5,7 @@ const Home = () =>{
     return(
         <div className="bg-gray-600 h-screen">
             <main className="flex justify-center items-center h-full">
-                <Clock />
+            <Clock />
             </main>
         </div>
 

@@ -5,21 +5,32 @@ import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const LengthSetter = props => {
   return (
-    <div className="flex flex-col items-center justify-center p-2">
+    <div className="flex flex-col items-center justify-center p-2 mb-4">
       <div
         className="text-xl"
         id={`${props.title.toLowerCase()}-label`}
       >{`${props.title} Length`}</div>
-      <div className="flex justify-center items center">
-        <div id={`${props.title.toLowerCase()}-decrement`}>
+      <div className="flex justify-center items-center">
+        <button
+          className="focus:outline-none"
+          id={`${props.title.toLowerCase()}-decrement`}
+          onClick={() => props.changeHandler(props.state-1)}
+        >
           <FontAwesomeIcon icon={faChevronDown} />
+        </button>
+        <div
+          className="mx-3 w-4 text-center"
+          id={`${props.title.toLowerCase()}-length`}
+        >
+          {props.state}
         </div>
-        <div className="px-2" id={`${props.title.toLowerCase()}-length`}>
-          5
-        </div>
-        <div id={`${props.title.toLowerCase()}-increment`}>
+        <button
+          className="focus:outline-none"
+          id={`${props.title.toLowerCase()}-increment`}
+          onClick={() => props.changeHandler(props.state+1)}
+        >
           <FontAwesomeIcon icon={faChevronUp} />
-        </div>
+        </button>
       </div>
     </div>
   );
