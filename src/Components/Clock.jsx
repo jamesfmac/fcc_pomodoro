@@ -11,8 +11,8 @@ const Clock = () => {
   const [sessionLength, setSessionLength] = useState(25);
   const [isRunning, setIsRunning] = useState(false);
   const [time, setTime] = useState(initialTime);
+  const [counter, setCounter] = useState(null);
   const [isSession, setIsSession] = useState(true);
-  const [tick, setTick] = useState(null);
 
   const handleBreakLength = newLength => {
     if (isRunning) {
@@ -37,24 +37,34 @@ const Clock = () => {
   };
 
   const startTimer = () => {
-  
-      setTick(setInterval(() => setTime(time => time - 1), 1000));
-      setIsRunning(true);
-
+    setCounter(setInterval(() => tick(), 1000));
+    setIsRunning(true);
   };
 
-  const pauseTimer = () =>{
-    setIsRunning(false);
-    clearInterval(tick);
+  const tick = () => {
+    setTime(time => time - 1);
+  };
 
-  }
+  const pauseTimer = () => {
+    setIsRunning(false);
+    clearInterval(counter);
+    setCounter(null);
+  };
 
   const handleReset = () => {
     setSessionLength(25);
     setBreakLength(5);
-   pauseTimer()
+    pauseTimer();
     setTime(25 * 60);
   };
+
+  if (time === 0) {
+
+
+    setTime(isSession ? breakLength * 60 : sessionLength * 60);
+ setTimeout(
+    setIsSession(!isSession),2000)
+  }
 
   return (
     <div className="flex flex-col p-2 text-white">
@@ -72,13 +82,13 @@ const Clock = () => {
         />
       </div>
       <div className="flex items-center justify-center">
-        <Timer time={time} />
+        <Timer time={time} isSession={isSession} />
       </div>
       <Controls
         resetHandler={handleReset}
         timeRunning={isRunning}
         startTimer={startTimer}
-        pauseTimer = {pauseTimer}
+        pauseTimer={pauseTimer}
       />
     </div>
   );
