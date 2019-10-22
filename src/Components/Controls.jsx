@@ -3,12 +3,18 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faPause, faUndo } from "@fortawesome/free-solid-svg-icons";
 
-const Controls = props => {
+export default  (props) => {
   return (
     <div className="flex items-center justify-center">
-      <button className=" focus:outline-none p-4" id="start_stop">
-        <FontAwesomeIcon icon={props.timeRunning ? faPause : faPlay} />{" "}
-      </button>
+      {props.timeRunning ? (
+        <button className=" focus:outline-none p-4" id="start_stop" onClick={props.pauseTimer}>
+          <FontAwesomeIcon icon={faPause} />
+        </button>
+      ) : (
+        <button className=" focus:outline-none p-4" id="start_stop" onClick={props.startTimer}>
+          <FontAwesomeIcon icon={faPlay} />
+        </button>
+      )}
       <button
         className="focus:outline-none"
         id="reset"
@@ -20,4 +26,3 @@ const Controls = props => {
   );
 };
 
-export default Controls;
