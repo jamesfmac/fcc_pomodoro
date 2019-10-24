@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/jamesfmac/fcc_pomodoro/static/css/main.7d36009a.chunk.css",
+    "main.js": "/jamesfmac/fcc_pomodoro/static/js/main.a091394d.chunk.js",
+    "main.js.map": "/jamesfmac/fcc_pomodoro/static/js/main.a091394d.chunk.js.map",
+    "runtime-main.js": "/jamesfmac/fcc_pomodoro/static/js/runtime-main.c1709271.js",
+    "runtime-main.js.map": "/jamesfmac/fcc_pomodoro/static/js/runtime-main.c1709271.js.map",
+    "static/js/2.85790de2.chunk.js": "/jamesfmac/fcc_pomodoro/static/js/2.85790de2.chunk.js",
+    "static/js/2.85790de2.chunk.js.map": "/jamesfmac/fcc_pomodoro/static/js/2.85790de2.chunk.js.map",
+    "index.html": "/jamesfmac/fcc_pomodoro/index.html",
+    "precache-manifest.a8f0424b00416491652b319c0f60787c.js": "/jamesfmac/fcc_pomodoro/precache-manifest.a8f0424b00416491652b319c0f60787c.js",
+    "service-worker.js": "/jamesfmac/fcc_pomodoro/service-worker.js",
+    "static/css/main.7d36009a.chunk.css.map": "/jamesfmac/fcc_pomodoro/static/css/main.7d36009a.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c1709271.js",
+    "static/js/2.85790de2.chunk.js",
+    "static/css/main.7d36009a.chunk.css",
+    "static/js/main.a091394d.chunk.js"
+  ]
+}
