@@ -3,7 +3,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
-const LengthSetter = props => {
+export default (props) => {
   return (
     <div className="flex flex-col items-center justify-center p-2 mb-4">
       <div
@@ -14,7 +14,7 @@ const LengthSetter = props => {
         <button
           className="focus:outline-none"
           id={`${props.title.toLowerCase()}-decrement`}
-          onClick={() => props.changeHandler(props.state-1)}
+          onClick={() => props.changeHandler(props.state - 1)}
         >
           <FontAwesomeIcon icon={faChevronDown} />
         </button>
@@ -27,7 +27,7 @@ const LengthSetter = props => {
         <button
           className="focus:outline-none"
           id={`${props.title.toLowerCase()}-increment`}
-          onClick={() => props.changeHandler(props.state+1)}
+          onClick={() => props.changeHandler(props.state + 1)}
         >
           <FontAwesomeIcon icon={faChevronUp} />
         </button>
@@ -35,5 +35,3 @@ const LengthSetter = props => {
     </div>
   );
 };
-
-export default LengthSetter;

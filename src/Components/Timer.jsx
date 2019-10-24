@@ -1,6 +1,6 @@
 import React from "react";
 
-const Timer = props => {
+export default (props) => {
   const formatMinutes = seconds =>
     String(Math.floor(seconds / 60).toFixed(0)).padStart(2, 0);
 
@@ -18,4 +18,4 @@ const Timer = props => {
   );
 };
 
-export default Timer;
+

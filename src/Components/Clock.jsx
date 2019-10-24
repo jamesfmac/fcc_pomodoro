@@ -4,7 +4,7 @@ import LengthSetter from "./LengthSetter";
 import Controls from "./Controls";
 import Timer from "./Timer";
 
-const Clock = () => {
+export default () => {
   const initialTime = 25 * 60;
 
   const [breakLength, setBreakLength] = useState(5);
@@ -42,7 +42,8 @@ const Clock = () => {
   };
 
   const tick = () => {
-    setTime(time => time - 1);
+    setTime(time=>time - 1);
+  
   };
 
   const pauseTimer = () => {
@@ -58,12 +59,12 @@ const Clock = () => {
     setTime(25 * 60);
   };
 
+  console.log(time)
   if (time === 0) {
-
-
+    console.log("Zero");
     setTime(isSession ? breakLength * 60 : sessionLength * 60);
- setTimeout(
-    setIsSession(!isSession),2000)
+
+    setTimeout(setIsSession(!isSession), 2000);
   }
 
   return (
@@ -90,8 +91,12 @@ const Clock = () => {
         startTimer={startTimer}
         pauseTimer={pauseTimer}
       />
+      <audio
+        id="beep"
+        preload="auto"
+        src="https://goo.gl/65cBl1"
+        
+      />
     </div>
   );
 };
-
-export default Clock;
