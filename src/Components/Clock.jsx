@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import LengthSetter from "./LengthSetter";
 import Controls from "./Controls";
-import Timer from "./Timer";
+import Display from "./Display";
 
-export default () => {
+const Clock = () => {
   const initialTime = 25 * 60;
 
   const [breakLength, setBreakLength] = useState(5);
@@ -13,6 +13,10 @@ export default () => {
   const [time, setTime] = useState(initialTime);
   const [counter, setCounter] = useState(null);
   const [isSession, setIsSession] = useState(true);
+
+  
+
+  let audioBeep = useRef();
 
   const handleBreakLength = newLength => {
     if (isRunning) {
@@ -42,8 +46,9 @@ export default () => {
   };
 
   const tick = () => {
-    setTime(time=>time - 1);
-  
+    setTime(time => time - 1);
+    console.log(audioBeep.current)
+    
   };
 
   const pauseTimer = () => {
@@ -57,19 +62,22 @@ export default () => {
     setBreakLength(5);
     pauseTimer();
     setTime(25 * 60);
+    setIsSession(true);
+    audioBeep.current.pause();
+    audioBeep.current.currentTime = 0;
   };
 
-  console.log(time)
-  if (time === 0) {
-    console.log("Zero");
-    setTime(isSession ? breakLength * 60 : sessionLength * 60);
+//don't love this approach 
 
-    setTimeout(setIsSession(!isSession), 2000);
+  if (time < 0) {
+    setTime(isSession ? breakLength * 60 : sessionLength * 60);
+    setIsSession(!isSession);
+    audioBeep.current.play();
   }
 
   return (
     <div className="flex flex-col p-2 text-white">
-      <div className="text-xl text-center text-6xl"> Pomodoro Clock</div>
+      <div className="text-center text-6xl"> Pomodoro Clock</div>
       <div className="flex items-center justify-around">
         <LengthSetter
           changeHandler={handleBreakLength}
@@ -83,7 +91,7 @@ export default () => {
         />
       </div>
       <div className="flex items-center justify-center">
-        <Timer time={time} isSession={isSession} />
+        <Display time={time} isSession={isSession} />
       </div>
       <Controls
         resetHandler={handleReset}
@@ -91,12 +99,11 @@ export default () => {
         startTimer={startTimer}
         pauseTimer={pauseTimer}
       />
-      <audio
-        id="beep"
-        preload="auto"
-        src="https://goo.gl/65cBl1"
-        
+      <audio id="beep" preload="auto" src="https://goo.gl/65cBl1"
+      ref={audioBeep}
       />
     </div>
   );
 };
+
+export default Clock;
